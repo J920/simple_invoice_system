@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1043838860088",
+    "project_id": "simple-invoice-system",
+    "storage_bucket": "simple-invoice-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043838860088:android:1288990aeb4603bf8b5fcd",
+        "android_client_info": {
+          "package_name": "com.derwaza.J920.simple_invoice_system"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1043838860088-qmofh81ubqtbj562upsdp26l9h94dsoo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoQGvDSCk8qIkMVObAOCEUUHUjWGo0V00"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043838860088-qmofh81ubqtbj562upsdp26l9h94dsoo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
