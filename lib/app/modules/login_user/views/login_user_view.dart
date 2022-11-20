@@ -14,108 +14,110 @@ class LoginUserView extends GetView<LoginUserController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(),
-      body: ModalProgressHUD(
-        inAsyncCall: controller.formLoading.value,
-        // inAsyncCall: false,
-        child: Container(
-          decoration: kContainerDecoration,
-          padding: EdgeInsets.symmetric(
-              horizontal: kDefaultPadding, vertical: kDefaultPadding),
-          child: Form(
-            key: controller.formKey,
-            child: ListView(
-              // physics: BouncingScrollPhysics(),
-              // mainAxisAlignment: MainAxisAlignment.center,
-              // crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Container(
-                  constraints: BoxConstraints(
-                    minHeight: 20,
-                    maxHeight: 180,
-                  ),
-                  child: Center(
-                    child: Text(
-                      LocaleKeys.login.tr,
-                      style: TextStyle(
-                        color: kBlackColor,
-                        fontSize: 18,
-                      ),
+      body: Obx(() {
+        return ModalProgressHUD(
+          inAsyncCall: controller.formLoading.value,
+          child: Container(
+            decoration: kContainerDecoration,
+            padding: EdgeInsets.symmetric(
+                horizontal: kDefaultPadding, vertical: kDefaultPadding),
+            child: Form(
+              key: controller.formKey,
+              child: ListView(
+                // physics: BouncingScrollPhysics(),
+                // mainAxisAlignment: MainAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                    constraints: BoxConstraints(
+                      minHeight: 20,
+                      maxHeight: 180,
                     ),
-                  ),
-                ),
-                TextFormField(
-                  textDirection: TextDirection.ltr,
-                  textAlign: TextAlign.center,
-                  keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
-                    if (value == null || !GetUtils.isEmail(value)) {
-                      return "الرجاء ادخال بريد الكتروني صحيح";
-                    }
-                  },
-                  decoration: kMainTextFieldDecoration.copyWith(
-                    hintText: "البريد الإلكتروني",
-                  ),
-                ),
-                SizedBox(
-                  height: kSpacing,
-                ),
-                TextFormField(
-                  textDirection: TextDirection.ltr,
-                  textAlign: TextAlign.center,
-                  keyboardType: TextInputType.visiblePassword,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  obscureText: true,
-                  validator: (value) {
-                    if (value == null || value == "" || value.length < 6) {
-                      return "الرجاء ادخال كلمة مرور بطول 6 أو أكثر";
-                    }
-                  },
-                  decoration: kMainTextFieldDecoration.copyWith(
-                    hintText: "كلمة المرور",
-                  ),
-                ),
-                SizedBox(
-                  height: kSpacing,
-                ),
-                Container(
-                  height: 50,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        if (controller.formKey.currentState!.validate()) {
-                          controller.login();
-                        }
-                      },
-                      child: Text(LocaleKeys.login.tr)),
-                ),
-                SizedBox(
-                  height: kSpacing,
-                ),
-                Wrap(
-                  alignment: WrapAlignment.center,
-                  children: [
-                    Text(
-                      "ليس لديك حساب؟ ",
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.toNamed(Routes.REGISTER_USER);
-                      },
+                    child: Center(
                       child: Text(
-                        LocaleKeys.signup.tr,
+                        LocaleKeys.login.tr,
                         style: TextStyle(
-                            color: kBlackColor, fontWeight: FontWeight.bold
-                            // decoration: TextDecoration.underline,
-                            ),
+                          color: kBlackColor,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                  TextFormField(
+                    textDirection: TextDirection.ltr,
+                    textAlign: TextAlign.center,
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (value) {
+                      if (value == null || !GetUtils.isEmail(value)) {
+                        return "الرجاء ادخال بريد الكتروني صحيح";
+                      }
+                    },
+                    decoration: kMainTextFieldDecoration.copyWith(
+                      hintText: "البريد الإلكتروني",
+                    ),
+                    onChanged: (value) => controller.email = value,
+                  ),
+                  SizedBox(
+                    height: kSpacing,
+                  ),
+                  TextFormField(
+                    textDirection: TextDirection.ltr,
+                    textAlign: TextAlign.center,
+                    keyboardType: TextInputType.visiblePassword,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    obscureText: true,
+                    validator: (value) {
+                      if (value == null || value == "" || value.length < 6) {
+                        return "الرجاء ادخال كلمة مرور بطول 6 أو أكثر";
+                      }
+                    },
+                    decoration: kMainTextFieldDecoration.copyWith(
+                      hintText: "كلمة المرور",
+                    ),
+                    onChanged: (value) => controller.password = value,
+                  ),
+                  SizedBox(
+                    height: kSpacing,
+                  ),
+                  Container(
+                    height: 50,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          if (controller.formKey.currentState!.validate()) {
+                            controller.login();
+                          }
+                        },
+                        child: Text(LocaleKeys.login.tr)),
+                  ),
+                  SizedBox(
+                    height: kSpacing,
+                  ),
+                  Wrap(
+                    alignment: WrapAlignment.center,
+                    children: [
+                      Text(
+                        "ليس لديك حساب؟ ",
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(Routes.REGISTER_USER);
+                        },
+                        child: Text(
+                          LocaleKeys.signup.tr,
+                          style: TextStyle(
+                              color: kBlackColor, fontWeight: FontWeight.bold
+                            // decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }

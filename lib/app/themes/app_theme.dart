@@ -6,7 +6,7 @@ import '../constants/app_constants.dart';
 class AppTheme {
   /// default application theme
   static ThemeData get basic => ThemeData(
-    // fontFamily: 'RB',
+        // fontFamily: 'RB',
         primaryColor: kPrimaryColor,
         primarySwatch: kPrimarySwatch,
         canvasColor: kCanvasColor,
@@ -17,9 +17,7 @@ class AppTheme {
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
-                    side: BorderSide(color: Colors.transparent)
-                )
-            ),
+                    side: BorderSide(color: Colors.transparent))),
             backgroundColor: MaterialStateProperty.all<Color>(
               kPrimaryColor,
             ),

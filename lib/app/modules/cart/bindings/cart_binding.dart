@@ -6,11 +6,8 @@ import '../controllers/cart_controller.dart';
 class CartBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<CartController>(
-      () => CartController(),
-    );
-    Get.put(
-      FirebaseService(),
+    Get.put<CartController>(
+      CartController(),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'dart:io';
 
 class LocalUser{
   String? name;
@@ -6,7 +6,9 @@ class LocalUser{
   String? address;
   String? email;
   String? password;
-  Image? logo;
+  File? logo;
+  String? logoExtension;
+  String? logoUrl;
 
   LocalUser({this.name, this.vatNumber, this.address,
     this.email, this.password, this.logo});

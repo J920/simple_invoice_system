@@ -4,8 +4,7 @@ import '../modules/cart/bindings/cart_binding.dart';
 import '../modules/cart/views/cart_view.dart';
 import '../modules/checkout/bindings/checkout_binding.dart';
 import '../modules/checkout/views/checkout_view.dart';
-import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/views/home_view.dart';
+import '../modules/loading/views/loading_view.dart';
 import '../modules/login_user/bindings/login_user_binding.dart';
 import '../modules/login_user/views/login_user_view.dart';
 import '../modules/register_user/bindings/register_user_binding.dart';
@@ -16,13 +15,12 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGIN_USER;
+  static const INITIAL = Routes.LOADING;
 
   static final routes = [
     GetPage(
-      name: _Paths.HOME,
-      page: () => const HomeView(),
-      binding: HomeBinding(),
+      name: _Paths.LOADING,
+      page: () => const LoadingView(),
     ),
     GetPage(
       name: _Paths.CART,

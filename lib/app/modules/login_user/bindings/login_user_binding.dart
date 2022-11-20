@@ -9,8 +9,6 @@ class LoginUserBinding extends Bindings {
     Get.lazyPut<LoginUserController>(
       () => LoginUserController(),
     );
-    Get.put(
-      FirebaseService(),
-    );
+
   }
 }

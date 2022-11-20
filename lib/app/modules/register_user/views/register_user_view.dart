@@ -1,5 +1,5 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../generated/locales.g.dart';
@@ -13,11 +13,9 @@ class RegisterUserView extends GetView<RegisterUserController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(),
       body: Obx(() {
         return ModalProgressHUD(
           inAsyncCall: controller.formLoading.value,
-          // inAsyncCall: false ,
           child: Container(
             decoration: kContainerDecoration,
             child: Form(
@@ -162,33 +160,32 @@ class RegisterUserView extends GetView<RegisterUserController> {
                     height: kSpacing,
                   ),
 
-                  SizedBox(
-                    height: 76,
-                    child: FormBuilderImagePicker(
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "الرجاء رفع الشعار";
-                        }
-                      },
-                      placeholderWidget: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text("الشعار",
-                              style: TextStyle(color: kGrayColor),
-                              textAlign: TextAlign.center),
-                        ],
-                      ),
-                      name: 'logo',
-                      decoration: kMainTextFieldDecoration,
-                      maxImages: 1,
-                      onImage: (pickedImaged) {
-                        controller.logo = pickedImaged.;
-                      },
+                  TextFormField(
+                    onTap: () => controller.pickLogo(),
+                    readOnly: true,
+                    controller: controller.logoFieldController,
+                    textAlign: TextAlign.center,
+                    keyboardType: TextInputType.visiblePassword,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "الرجاء رفع الشعار";
+                      }
+                    },
+                    decoration: kMainTextFieldDecoration.copyWith(
+                      hintText: "الشعار",
+                      suffixIcon: controller.logo.value != null
+                          ? ClipRRect(
+                        borderRadius: BorderRadius.circular(kBorderRadius),
+                          child: Image.file(File(controller.logo.value?.paths.first! ?? ""), height: 72, ),
+                      )
+                          : Icon(Icons.image_search),
                     ),
                   ),
 
+                  SizedBox(
+                    height: kSpacing,
+                  ),
                   SizedBox(
                     height: kSpacing,
                   ),

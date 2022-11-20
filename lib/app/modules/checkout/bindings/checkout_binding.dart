@@ -10,8 +10,5 @@ class CheckoutBinding extends Bindings {
       () => CheckoutController(),
     );
 
-    Get.put(
-      FirebaseService(),
-    );
   }
 }

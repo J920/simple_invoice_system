@@ -9,9 +9,5 @@ class RegisterUserBinding extends Bindings {
     Get.lazyPut<RegisterUserController>(
       () => RegisterUserController(),
     );
-
-    Get.put(
-      FirebaseService(),
-    );
   }
 }

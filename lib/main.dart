@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       translationsKeys: AppTranslation.translations,
       debugShowCheckedModeBanner: false,
       locale: Get.deviceLocale,
-
+      textDirection: TextDirection.rtl,
       title: "Application",
       theme: AppTheme.basic,
       initialRoute: AppPages.INITIAL,
