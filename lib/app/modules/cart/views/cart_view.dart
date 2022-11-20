@@ -17,7 +17,7 @@ class CartView extends GetView<CartController> {
       appBar: AppBar(
         centerTitle: true,
         titleTextStyle: TextStyle(color: kBlackColor),
-        title: Text("المنتجات"),
+        title: Text(LocaleKeys.items.tr),
         backgroundColor: Colors.transparent,
         leading: IconButton(
             onPressed: () => controller.signOut(),
@@ -71,11 +71,11 @@ class CartView extends GetView<CartController> {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      subTitle1: Text("الكمية المتاحة: ${item
+                      subTitle1: Text("${LocaleKeys.in_stock.tr}: ${item
                           .stock}"),
                       trailing: Padding(
                         padding: const EdgeInsets.only(top: 12.0),
-                        child: Text("${item.price} ريال"),
+                        child: Text("${item.price} ${LocaleKeys.riyal.tr}"),
                       ),
                     );
                   });

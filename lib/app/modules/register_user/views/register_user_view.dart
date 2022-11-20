@@ -46,7 +46,7 @@ class RegisterUserView extends GetView<RegisterUserController> {
                     keyboardType: TextInputType.name,
                     validator: (value) {
                       if (value == null || value == "") {
-                        return "الرجاء ادخال اسم صحيح";
+                        return LocaleKeys.error_massages_name.tr;
                       }
                     },
                     onChanged: (value) {
@@ -66,14 +66,14 @@ class RegisterUserView extends GetView<RegisterUserController> {
                         TextInputType.numberWithOptions(decimal: false),
                     validator: (value) {
                       if (value == null || value == "" || value.length < 10) {
-                        return "الرجاء ادخال اسم صحيح";
+                        return LocaleKeys.error_massages_name.tr;
                       }
                     },
                     onChanged: (value) {
                       controller.vatNumber = value;
                     },
                     decoration: kMainTextFieldDecoration.copyWith(
-                      hintText: "الرقم الضريبي",
+                      hintText: LocaleKeys.vat_number.tr,
                     ),
                   ),
                   SizedBox(
@@ -85,14 +85,14 @@ class RegisterUserView extends GetView<RegisterUserController> {
                     keyboardType: TextInputType.streetAddress,
                     validator: (value) {
                       if (value == null || value == "") {
-                        return "الرجاء ادخال اسم صحيح";
+                        return LocaleKeys.error_massages_name.tr;
                       }
                     },
                     onChanged: (value) {
                       controller.address = value;
                     },
                     decoration: kMainTextFieldDecoration.copyWith(
-                      hintText: "العنوان",
+                      hintText: LocaleKeys.address.tr,
                     ),
                   ),
                   SizedBox(
@@ -105,14 +105,14 @@ class RegisterUserView extends GetView<RegisterUserController> {
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
                       if (value == null || value == "") {
-                        return "الرجاء ادخال اسم صحيح";
+                        return LocaleKeys.error_massages_name.tr;
                       }
                     },
                     onChanged: (value) {
                       controller.email = value;
                     },
                     decoration: kMainTextFieldDecoration.copyWith(
-                      hintText: "البريد الإلكتروني",
+                      hintText: LocaleKeys.email.tr,
                     ),
                   ),
                   SizedBox(
@@ -127,11 +127,11 @@ class RegisterUserView extends GetView<RegisterUserController> {
                     obscureText: true,
                     validator: (value) {
                       if (value == null || value == "" || value.length < 6) {
-                        return "الرجاء ادخال كلمة مرور بطول 6 أو أكثر";
+                        return LocaleKeys.error_massages_password.tr;
                       }
                     },
                     decoration: kMainTextFieldDecoration.copyWith(
-                      hintText: "كلمة المرور",
+                      hintText: LocaleKeys.password.tr,
                     ),
                     onChanged: (value) {
                       controller.password = value;
@@ -148,11 +148,11 @@ class RegisterUserView extends GetView<RegisterUserController> {
                     obscureText: true,
                     validator: (value) {
                       if (value == null || value == "" || value != controller.password) {
-                        return "كلمة المرور غير متطابقة";
+                        return LocaleKeys.error_massages_confirm_password.tr;
                       }
                     },
                     decoration: kMainTextFieldDecoration.copyWith(
-                      hintText: "تأكيد كلمة المرور",
+                      hintText: LocaleKeys.confirm_password.tr,
                     ),
                   ),
 
@@ -169,11 +169,11 @@ class RegisterUserView extends GetView<RegisterUserController> {
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "الرجاء رفع الشعار";
+                        return LocaleKeys.error_massages_logo.tr;
                       }
                     },
                     decoration: kMainTextFieldDecoration.copyWith(
-                      hintText: "الشعار",
+                      hintText: LocaleKeys.logo.tr,
                       suffixIcon: controller.logo.value != null
                           ? ClipRRect(
                         borderRadius: BorderRadius.circular(kBorderRadius),
@@ -223,7 +223,7 @@ class RegisterUserView extends GetView<RegisterUserController> {
                     alignment: WrapAlignment.center,
                     children: [
                       Text(
-                        "لديك حساب؟ ",
+                        LocaleKeys.have_account.tr,
                       ),
                       GestureDetector(
                         onTap: () {

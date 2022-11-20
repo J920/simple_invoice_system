@@ -40,7 +40,7 @@ class CheckoutView extends GetView<CheckoutController> {
                               selectable: false,
                               leading: Column(
                                 children: [
-                                  Text("الكمية"),
+                                  Text(LocaleKeys.quantity.tr),
                                   Text(e.quantity.value.toString()),
                                 ],
                               ),
@@ -59,9 +59,9 @@ class CheckoutView extends GetView<CheckoutController> {
                                 padding: const EdgeInsets.only(top: 12.0),
                                 child: Column(
                                   children: [
-                                    Text("${e.price} ريال", style: TextStyle(
+                                    Text("${e.price} ${LocaleKeys.riyal.tr}", style: TextStyle(
                                         color: kGrayColor, fontSize: 10),),
-                                    Text("${e.total} ريال"),
+                                    Text("${e.total} ${LocaleKeys.riyal.tr}"),
 
                                   ],
                                 ),
@@ -81,18 +81,18 @@ class CheckoutView extends GetView<CheckoutController> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("الإجمالي غير شامل الضريبة",
+                            Text(LocaleKeys.total_no_vat.tr,
                             ),
-                            Text("${controller.totalExclVat} ريال",
+                            Text("${controller.totalExclVat} ${LocaleKeys.riyal.tr}",
                             ),
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("مجموع ضريبة القيمة المضافة",
+                            Text(LocaleKeys.total_vat_amount.tr,
                             ),
-                            Text("${controller.totalVat} ريال",
+                            Text("${controller.totalVat} ${LocaleKeys.riyal.tr}",
                             ),
                           ],
                         ),
@@ -103,7 +103,7 @@ class CheckoutView extends GetView<CheckoutController> {
                               style: TextStyle(fontWeight: FontWeight.bold,
                                   fontSize: 20),),
 
-                            Text("${controller.total} ريال",
+                            Text("${controller.total} ${LocaleKeys.riyal.tr}",
                                 style: TextStyle(fontWeight: FontWeight.bold,
                                     fontSize: 20)),
                           ],
@@ -119,11 +119,11 @@ class CheckoutView extends GetView<CheckoutController> {
                       child: TextFormField(
                         validator: (value) {
                           if (value == null || value == "") {
-                            return "الرجاء ادخال اسم صحيح";
+                            return LocaleKeys.error_massages_name.tr;
                           }
                         },
                         decoration: kMainTextFieldDecoration.copyWith(
-                            hintText: "اسم المشتري"
+                            hintText: LocaleKeys.buyer_name.tr
                         ),
                         onChanged: (value) => controller.buyerName = value,
                       ),

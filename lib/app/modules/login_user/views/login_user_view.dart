@@ -49,11 +49,11 @@ class LoginUserView extends GetView<LoginUserController> {
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
                       if (value == null || !GetUtils.isEmail(value)) {
-                        return "الرجاء ادخال بريد الكتروني صحيح";
+                        return LocaleKeys.error_massages_email.tr;
                       }
                     },
                     decoration: kMainTextFieldDecoration.copyWith(
-                      hintText: "البريد الإلكتروني",
+                      hintText: LocaleKeys.email.tr,
                     ),
                     onChanged: (value) => controller.email = value,
                   ),
@@ -68,11 +68,11 @@ class LoginUserView extends GetView<LoginUserController> {
                     obscureText: true,
                     validator: (value) {
                       if (value == null || value == "" || value.length < 6) {
-                        return "الرجاء ادخال كلمة مرور بطول 6 أو أكثر";
+                        return LocaleKeys.error_massages_password.tr;
                       }
                     },
                     decoration: kMainTextFieldDecoration.copyWith(
-                      hintText: "كلمة المرور",
+                      hintText: LocaleKeys.password.tr,
                     ),
                     onChanged: (value) => controller.password = value,
                   ),
@@ -96,7 +96,7 @@ class LoginUserView extends GetView<LoginUserController> {
                     alignment: WrapAlignment.center,
                     children: [
                       Text(
-                        "ليس لديك حساب؟ ",
+                        LocaleKeys.dont_have_account.tr,
                       ),
                       GestureDetector(
                         onTap: () {

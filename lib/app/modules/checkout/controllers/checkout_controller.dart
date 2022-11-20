@@ -70,26 +70,27 @@ class CheckoutController extends GetxController {
 
       cartController.selectedItemsList.clear();
     cartController.total.value = 0 ;
-    Get.offAllNamed(Routes.CART);
+    Get.back();
 
     Get.defaultDialog(
         title: "هل تريد طباعة الفاتورة؟",
         middleText: "",
         actions: [
-          ElevatedButton(
-              onPressed: (){
-                Get.back();
-                Get.dialog(PdfPreview(
-                  build: (format) =>  pdfInvoice,
-                ));
-              },
-              child: Text(LocaleKeys.ok.tr),
-          ),
+
           TextButton(
               onPressed: (){
                Get.back();
               },
               child: Text(LocaleKeys.cancel.tr),
+          ),
+          ElevatedButton(
+            onPressed: (){
+              Get.back();
+              Get.dialog(PdfPreview(
+                build: (format) =>  pdfInvoice,
+              ));
+            },
+            child: Text(LocaleKeys.ok.tr),
           ),
         ],
     );
@@ -165,20 +166,20 @@ class CheckoutController extends GetxController {
                       mainAxisAlignment: pw.MainAxisAlignment.end,
                     children: [
                     pw.Text(_firebaseService.user.address ?? "test"),
-                    pw.Text("العنوان: "),
+                    pw.Text(LocaleKeys.address.tr),
                   ],),
                   pw.Row(
                       mainAxisAlignment: pw.MainAxisAlignment.end,
                     children: [
                     pw.Text(_firebaseService.user.vatNumber ?? "test"),
-                    pw.Text("الرقم الضريبي: "),
+                    pw.Text("${LocaleKeys.vat_number.tr}: "),
                   ],),
                   pw.SizedBox(height: kDefaultPadding*2),
                   pw.Row(
                       mainAxisAlignment: pw.MainAxisAlignment.end,
                     children: [
                     pw.Text(invoice.buyerName),
-                    pw.Text("المشتري: "),
+                    pw.Text("${LocaleKeys.buyer_name.tr}: "),
                   ],),
                   pw.SizedBox(height: kDefaultPadding),
                   pw.Table(
@@ -195,25 +196,25 @@ class CheckoutController extends GetxController {
                         pw.Row(
                           mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
                           children: [
-                            pw.Text("${invoice.totalExclVat} ريال",
+                            pw.Text("${invoice.totalExclVat} ${LocaleKeys.riyal.tr}",
                             ),
-                            pw.Text("الإجمالي غير شامل الضريبة",
-                            ),
-                          ],
-                        ),
-                        pw.Row(
-                          mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-                          children: [
-                            pw.Text("${invoice.vatAmount} ريال",
-                            ),
-                            pw.Text("مجموع ضريبة القيمة المضافة %${invoice.vatRate}",
+                            pw.Text(LocaleKeys.total_no_vat.tr,
                             ),
                           ],
                         ),
                         pw.Row(
                           mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
                           children: [
-                            pw.Text("${invoice.totalInclVat} ريال", style: const pw.TextStyle(fontSize: 24),),
+                            pw.Text("${invoice.vatAmount} ${LocaleKeys.riyal.tr}",
+                            ),
+                            pw.Text("${LocaleKeys.total_vat_amount.tr} %${invoice.vatRate}",
+                            ),
+                          ],
+                        ),
+                        pw.Row(
+                          mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+                          children: [
+                            pw.Text("${invoice.totalInclVat} ${LocaleKeys.riyal.tr}", style: const pw.TextStyle(fontSize: 24),),
                             pw.Text(LocaleKeys.total.tr,
                               style: const pw.TextStyle(fontSize: 24),),
                           ],
@@ -238,13 +239,13 @@ class CheckoutController extends GetxController {
       pw.TableRow(
           verticalAlignment: pw.TableCellVerticalAlignment.middle,
           children :[
-            pw.Center(child: pw.Text('الإجمالي'),),
-            pw.Center(child: pw.Text('الضريبة'),),
-            pw.Center(child: pw.Text('نسبة الضريبة'),),
-            pw.Center(child: pw.Text('المجموع'),),
-            pw.Center(child: pw.Text('الكمية'),),
-            pw.Center(child: pw.Text('السعر'),),
-            pw.Center(child: pw.Text('الوصف'),),
+            pw.Center(child: pw.Text(LocaleKeys.grand_total.tr),),
+            pw.Center(child: pw.Text(LocaleKeys.vat.tr),),
+            pw.Center(child: pw.Text(LocaleKeys.vat_rate.tr),),
+            pw.Center(child: pw.Text(LocaleKeys.total.tr),),
+            pw.Center(child: pw.Text(LocaleKeys.quantity.tr),),
+            pw.Center(child: pw.Text(LocaleKeys.price.tr),),
+            pw.Center(child: pw.Text(LocaleKeys.description.tr),),
           ]),
     );
 
